@@ -1,16 +1,12 @@
+import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from './routes/AppRoutes';
+
 function App() {
-
-
   return (
-    <>
-
-      <button className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition">
-        Blue Button
-      </button>
-
-
-    </>
-  )
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

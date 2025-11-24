@@ -1,0 +1,74 @@
+{
+  "ambulances": [
+    {
+      "id": 1,
+      "name": "AMB-01",
+      "status": "AVAILABLE",
+      "lat": 33.5731,
+      "lng": -7.5898,
+      "type": "A",
+      "crew": ["Ahmed", "Sarah"]
+    },
+    {
+      "id": 2,
+      "name": "AMB-02",
+      "status": "BUSY",
+      "lat": 33.5831,
+      "lng": -7.6098,
+      "type": "B",
+      "crew": ["Karim", "Lina"]
+    },
+    {
+      "id": 3,
+      "name": "AMB-03",
+      "status": "MAINTENANCE",
+      "lat": 33.5631,
+      "lng": -7.5998,
+      "type": "C",
+      "crew": ["Youssef"]
+    },
+    {
+      "id": 4,
+      "name": "AMB-04",
+      "status": "AVAILABLE",
+      "lat": 33.5931,
+      "lng": -7.5798,
+      "type": "A",
+      "crew": ["Omar", "Fatima"]
+    }
+  ],
+  "incidents": [
+    {
+      "id": 1,
+      "type": "Cardiac Arrest",
+      "severity": "CRITICAL",
+      "lat": 33.5751,
+      "lng": -7.5928,
+      "status": "PENDING",
+      "address": "123 Rue Mohamed V",
+      "createdAt": "2025-11-24T10:00:00Z"
+    },
+    {
+      "id": 2,
+      "type": "zakaria elwnass",
+      "severity": "HIGH",
+      "lat": 32.247704,
+      "lng": -8.5217117,
+      "status": "IN_PROGRESS",
+      "address": "Boulevard Moulay Youssef, Youssoufia, Morocco",
+      "assignedAmbulanceId": 2,
+      "createdAt": "2025-11-24T11:30:00Z"
+    },
+    {
+      "id": 3,
+      "type": "Minor Injury",
+      "severity": "LOW",
+      "lat": 33.5651,
+      "lng": -7.5858,
+      "status": "RESOLVED",
+      "address": "Quartier Maarif",
+      "assignedAmbulanceId": 1,
+      "createdAt": "2025-11-23T14:00:00Z"
+    }
+  ]
+}
