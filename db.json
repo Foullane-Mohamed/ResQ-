@@ -1,55 +1,154 @@
 {
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@resq.com",
+      "password": "$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi",
+      "name": "Admin User",
+      "role": "ADMIN"
+    },
+    {
+      "id": "2",
+      "email": "regulateur@resq.com",
+      "password": "$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi",
+      "name": "Régulateur",
+      "role": "REGULATEUR"
+    },
+    {
+      "id": "3",
+      "email": "chef@resq.com",
+      "password": "$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi",
+      "name": "Chef de Parc",
+      "role": "CHEF_DE_PARC"
+    }
+  ],
   "ambulances": [
     {
-      "id": 1,
+      "id": "1",
       "name": "AMB-01",
       "status": "AVAILABLE",
       "lat": 33.5731,
       "lng": -7.5898,
       "type": "A",
-      "crew": ["Ahmed", "Sarah"]
+      "crew": ["Ahmed", "Sarah"],
+      "lastUpdate": "2025-11-26T15:22:50.211Z"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "AMB-02",
       "status": "BUSY",
       "lat": 33.5831,
       "lng": -7.6098,
       "type": "B",
-      "crew": ["Karim", "Lina"]
+      "crew": ["Karim", "Lina"],
+      "lastUpdate": "2025-11-26T15:22:55.647Z"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "AMB-03",
       "status": "MAINTENANCE",
       "lat": 33.5631,
       "lng": -7.5998,
       "type": "C",
-      "crew": ["Youssef"]
+      "crew": ["Youssef"],
+      "lastUpdate": "2025-11-26T13:37:23.679Z"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "AMB-04",
       "status": "AVAILABLE",
       "lat": 33.5931,
       "lng": -7.5798,
       "type": "A",
-      "crew": ["Omar", "Fatima"]
+      "crew": ["Omar", "Fatima"],
+      "lastUpdate": "2025-11-26T13:37:23.679Z"
+    },
+    {
+      "id": "1764162828929",
+      "name": "Elaine Hoover",
+      "type": "A",
+      "lat": 33.60113228537358,
+      "lng": -7.596638319036433,
+      "crew": ["Sint molestiae iusto"],
+      "status": "BUSY",
+      "lastUpdate": "2025-11-26T13:37:23.679Z"
+    },
+    {
+      "id": "1764162839108",
+      "name": "Alea Duke",
+      "type": "C",
+      "lat": 33.58520410852247,
+      "lng": -7.5586604444634435,
+      "crew": ["Fugiat mollitia tem"],
+      "status": "BUSY",
+      "lastUpdate": "2025-11-26T13:37:23.679Z"
+    },
+    {
+      "id": 1764163358617,
+      "name": "Hiroko Miles",
+      "type": "A",
+      "lat": 33.573138350727305,
+      "lng": -7.577491521761108,
+      "crew": ["Cillum et occaecat v"],
+      "status": "MAINTENANCE",
+      "lastUpdate": "2025-11-26T13:37:23.679Z"
+    },
+    {
+      "id": 1764163365013,
+      "name": "Piper Russo",
+      "type": "A",
+      "lat": 33.53612173430135,
+      "lng": -7.625785152553067,
+      "crew": ["Quaerat dolor volupt"],
+      "status": "MAINTENANCE",
+      "lastUpdate": "2025-11-26T13:37:23.679Z"
+    },
+    {
+      "name": "Abel Barron",
+      "type": "C",
+      "lat": 33.60723578163877,
+      "lng": -7.610672164936706,
+      "crew": ["Ut nemo quibusdam si"],
+      "id": 1764164201849,
+      "status": "MAINTENANCE",
+      "lastUpdate": "2025-11-26T13:37:23.679Z"
+    },
+    {
+      "name": "Scott Wiggins",
+      "type": "B",
+      "lat": 33.59492722287597,
+      "lng": -7.551270852800347,
+      "crew": ["Eum et est harum eli"],
+      "id": 1764164205912,
+      "status": "BUSY",
+      "lastUpdate": "2025-11-26T13:37:23.679Z"
+    },
+    {
+      "name": "Uriah Rich",
+      "type": "C",
+      "lat": 33.530181879461345,
+      "lng": -7.610458580058045,
+      "crew": ["Accusamus tempora an"],
+      "id": 1764164245031,
+      "status": "AVAILABLE",
+      "lastUpdate": "2025-11-26T13:37:25.031Z"
     }
   ],
   "incidents": [
     {
-      "id": 1,
+      "id": "1",
       "type": "Cardiac Arrest",
       "severity": "CRITICAL",
       "lat": 33.5751,
       "lng": -7.5928,
-      "status": "PENDING",
+      "status": "IN_PROGRESS",
       "address": "123 Rue Mohamed V",
-      "createdAt": "2025-11-24T10:00:00Z"
+      "createdAt": "2025-11-24T10:00:00Z",
+      "assignedAmbulanceId": "3",
+      "updatedAt": "2025-11-26T13:22:01.845Z"
     },
     {
-      "id": 2,
+      "id": "2",
       "type": "zakaria elwnass",
       "severity": "HIGH",
       "lat": 32.247704,
@@ -60,7 +159,7 @@
       "createdAt": "2025-11-24T11:30:00Z"
     },
     {
-      "id": 3,
+      "id": "3",
       "type": "Minor Injury",
       "severity": "LOW",
       "lat": 33.5651,
@@ -69,6 +168,82 @@
       "address": "Quartier Maarif",
       "assignedAmbulanceId": 1,
       "createdAt": "2025-11-23T14:00:00Z"
+    },
+    {
+      "id": "b1e1",
+      "type": "HIGH",
+      "address": "agadir",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "1764150469290",
+      "type": "Fugiat nisi delenit",
+      "address": "Perferendis sed Nam ",
+      "severity": "LOW",
+      "description": "Sit id et consectetu",
+      "lat": 33.588858253966606,
+      "lng": -7.594112141620808,
+      "status": "IN_PROGRESS",
+      "createdAt": "2025-11-26T09:47:49.290Z",
+      "assignedAmbulanceId": "3",
+      "updatedAt": "2025-11-26T13:22:19.252Z"
+    },
+    {
+      "id": "1764163305651",
+      "type": "Dolor amet ullamco ",
+      "address": "agadir",
+      "severity": "MODERATE",
+      "description": "Dicta nemo asperiore",
+      "lat": 33.54887946015106,
+      "lng": -7.5939435509854025,
+      "status": "IN_PROGRESS",
+      "createdAt": "2025-11-26T13:21:45.651Z",
+      "assignedAmbulanceId": "1764162828929",
+      "updatedAt": "2025-11-26T13:22:11.079Z"
+    },
+    {
+      "type": "Quibusdam et aut und",
+      "address": "Minus excepteur dolo",
+      "severity": "MODERATE",
+      "description": "Qui ad laboriosam r",
+      "lat": 33.524837954216146,
+      "lng": -7.624474394922297,
+      "id": "1764164210864",
+      "status": "PENDING",
+      "createdAt": "2025-11-26T13:36:50.864Z"
+    },
+    {
+      "type": "Vitae dolore explica",
+      "address": "Nostrud voluptatibus",
+      "severity": "HIGH",
+      "description": "Laudantium non temp",
+      "lat": 33.54716478071684,
+      "lng": -7.634436367675457,
+      "id": "1764164215370",
+      "status": "PENDING",
+      "createdAt": "2025-11-26T13:36:55.370Z"
+    },
+    {
+      "type": "Qui eum nisi quia au",
+      "address": "Sapiente repudiandae",
+      "severity": "MODERATE",
+      "description": "Nihil deserunt accus",
+      "lat": 33.55518283339062,
+      "lng": -7.5612272230076005,
+      "id": "1764164229007",
+      "status": "PENDING",
+      "createdAt": "2025-11-26T13:37:09.007Z"
+    },
+    {
+      "type": "Non voluptatem ipsa",
+      "address": "Voluptates vel repel",
+      "severity": "CRITICAL",
+      "description": "Dolore neque dolore ",
+      "lat": 33.562941937971175,
+      "lng": -7.551075919527933,
+      "id": "1764164236400",
+      "status": "PENDING",
+      "createdAt": "2025-11-26T13:37:16.400Z"
     }
   ]
 }

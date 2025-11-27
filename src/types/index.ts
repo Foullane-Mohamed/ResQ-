@@ -8,7 +8,7 @@ export interface Ambulance {
   status: AmbulanceStatus;
   lat: number;
   lng: number;
-  type: string; // A, B, or C (ambulance types)
+  type: string; 
   crew?: string[];
 }
 
@@ -20,6 +20,6 @@ export interface Incident {
   lng: number;
   status: IncidentStatus;
   address: string;
-  assignedAmbulanceId?: number; // Optional because pending incidents define no ambulance
+  assignedAmbulanceId?: number; 
   createdAt: string;
 }
