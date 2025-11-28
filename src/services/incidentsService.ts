@@ -1,5 +1,35 @@
-import api from '../../../services/api';
-import type { Incident, CreateIncidentRequest, AssignAmbulanceRequest } from '../types';
+import api from './api';
+
+export type IncidentSeverity = 'CRITICAL' | 'HIGH' | 'MODERATE' | 'LOW';
+export type IncidentStatus = 'PENDING' | 'IN_PROGRESS' | 'RESOLVED';
+
+export interface Incident {
+  id: number | string;
+  type: string;
+  severity: IncidentSeverity;
+  lat: number;
+  lng: number;
+  status: IncidentStatus;
+  address: string;
+  assignedAmbulanceId?: number;
+  createdAt: string;
+  updatedAt?: string;
+  description?: string;
+}
+
+export interface CreateIncidentRequest {
+  type: string;
+  address: string;
+  severity: IncidentSeverity;
+  lat?: number;
+  lng?: number;
+  description?: string;
+}
+
+export interface AssignAmbulanceRequest {
+  incidentId: number | string;
+  ambulanceId: number;
+}
 
 export class IncidentsService {
   async getAll(): Promise<Incident[]> {
@@ -13,7 +43,7 @@ export class IncidentsService {
   }
 
   async create(data: CreateIncidentRequest): Promise<Incident> {
-    // Simulate geocoding if coordinates not provided
+
     if (!data.lat || !data.lng) {
       data.lat = 33.5731 + (Math.random() - 0.5) * 0.1;
       data.lng = -7.5898 + (Math.random() - 0.5) * 0.1;

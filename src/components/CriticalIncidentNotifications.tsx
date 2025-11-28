@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AlertTriangle, X } from "lucide-react";
-import { useIncidents } from "../features/incidents";
+import { useIncidents } from "../hooks/useIncidents";
 import { Badge } from "./ui/Badge";
 import { Button } from "./ui/Button";
 
@@ -18,7 +18,6 @@ export const CriticalIncidentNotifications = () => {
     setDismissedIncidents((prev) => new Set([...prev, incidentId]));
   };
 
-  // Auto-dismiss resolved incidents
   useEffect(() => {
     const resolvedIds = criticalIncidents
       .filter((incident) => incident.status === "RESOLVED")

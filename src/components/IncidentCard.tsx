@@ -7,11 +7,11 @@ import {
   Users,
 } from "lucide-react";
 import { useIncidents } from "../hooks/useIncidents";
-import { Badge } from "../../../components/ui/Badge";
-import { Button } from "../../../components/ui/Button";
+import { Badge } from "./ui/Badge";
+import { Button } from "./ui/Button";
 import { SmartAssignmentDialog } from "./SmartAssignmentDialog";
-import { formatDateTime } from "../../../lib/utils";
-import type { Incident } from "../types";
+import { formatDateTime } from "../lib/utils";
+import type { Incident } from "../services/incidentsService";
 
 interface IncidentCardProps {
   incident: Incident;
@@ -92,7 +92,6 @@ export const IncidentCard = ({ incident }: IncidentCardProps) => {
       )}
 
       <div className="flex gap-2">
-        {" "}
         {incident.status === "PENDING" && (
           <Button size="sm" variant="primary" onClick={handleAssignAmbulance}>
             Assigner ambulance
@@ -108,7 +107,7 @@ export const IncidentCard = ({ incident }: IncidentCardProps) => {
           >
             Marquer comme résolu
           </Button>
-        )}{" "}
+        )}
       </div>
 
       {showAssignmentDialog && (

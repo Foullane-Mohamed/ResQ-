@@ -7,9 +7,8 @@ import {
   Siren,
   LogOut,
   User,
-  TestTube,
 } from "lucide-react";
-import { useAuth } from "../features/auth";
+import { useAuth } from "../hooks/useAuth";
 import { Button } from "./ui/Button";
 import { hasPermission } from "../lib/permissions";
 import { CriticalIncidentNotifications } from "./CriticalIncidentNotifications";
@@ -45,17 +44,14 @@ export default function Layout() {
     },
   ];
 
-  // Filter navigation items based on user permissions
   const navItems = allNavItems.filter(
     (item) => user && hasPermission(user, item.permission as any)
   );
   return (
     <div className="flex h-screen bg-gray-100 text-slate-800 font-sans">
-      {/* Critical Incident Notifications for Régulateur users */}
       {hasPermission(user, "RECEIVE_CRITICAL_NOTIFICATIONS") && (
         <CriticalIncidentNotifications />
       )}
-
       <aside className="w-64 bg-white border-r border-gray-200 flex flex-col fixed h-full z-10">
         <div className="h-16 flex items-center px-6 border-b border-gray-100">
           <Siren className="w-8 h-8 text-red-600 mr-2" />
@@ -102,18 +98,17 @@ export default function Layout() {
             &copy; 2025 ResQ Systems
           </div>
         </div>
-      </aside>
-
+      </aside>{" "}
       <main className="flex-1 ml-64 overflow-y-auto">
-        {" "}
         <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 sticky top-0 z-10 shadow-sm">
           <h2 className="text-lg font-semibold text-slate-700">
             Medical Dispatch Console
           </h2>
-        </header>{" "}
+        </header>
         <div className="p-8">
+          {" "}
           <Outlet />
-        </div>{" "}
+        </div>
       </main>
     </div>
   );

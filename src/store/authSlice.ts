@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { User, AuthState, AuthResponse } from '../features/auth/types';
+import type { User, AuthState, AuthResponse } from '../services/authService';
 
 const storedUser = localStorage.getItem('resq_user');
 const storedToken = localStorage.getItem('resq_token');

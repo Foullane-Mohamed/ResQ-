@@ -1,8 +1,6 @@
-import {
-  useAmbulances,
-  AddAmbulanceDialog,
-  type AmbulanceStatus,
-} from "../features/ambulances";
+import { useAmbulances } from "../hooks/useAmbulances";
+import { AddAmbulanceDialog } from "../components/AddAmbulanceDialog";
+import type { AmbulanceStatus } from "../services/ambulancesService";
 import {
   Car,
   AlertCircle,
@@ -15,10 +13,9 @@ import {
 import { Button } from "../components/ui/Button";
 import { Badge } from "../components/ui/Badge";
 import { RoleGuard } from "../components/RoleGuard";
-import { useAuth } from "../features/auth";
+import { useAuth } from "../hooks/useAuth";
 import { useState } from "react";
 import { hasPermission } from "../lib/permissions";
-import { FleetMaintenancePanel } from "../components/FleetMaintenancePanel";
 
 export default function Fleet() {
   const { user } = useAuth();
@@ -56,7 +53,6 @@ export default function Fleet() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        {" "}
         <div>
           <h1 className="text-2xl font-bold text-slate-900">
             Fleet Management
@@ -92,9 +88,9 @@ export default function Fleet() {
               <option value="ALL">All Vehicles</option>
               <option value="AVAILABLE">Available</option>
               <option value="BUSY">Busy</option>
-              <option value="MAINTENANCE">Maintenance</option>
+              <option value="MAINTENANCE">Maintenance</option>{" "}
             </select>
-          </div>{" "}
+          </div>
           <RoleGuard permission="ADD_REMOVE_VEHICLES">
             <Button icon={Plus} onClick={() => setShowAddDialog(true)}>
               Add Ambulance
@@ -141,9 +137,9 @@ export default function Fleet() {
                         >
                           {member.charAt(0)}
                         </div>
-                      ))}
+                      ))}{" "}
                     </div>
-                  </td>{" "}
+                  </td>
                   <td className="px-6 py-4">
                     <Badge
                       variant={getStatusBadge(amb.status)}
@@ -197,7 +193,6 @@ export default function Fleet() {
                                 `Êtes-vous sûr de vouloir supprimer ${amb.name}?`
                               )
                             ) {
-                              // TODO: Implement remove vehicle functionality
                               console.log("Remove vehicle:", amb.id);
                             }
                           }}
@@ -211,20 +206,18 @@ export default function Fleet() {
               ))}
             </tbody>
           </table>
-        </div>
+        </div>{" "}
         {filteredAmbulances?.length === 0 && (
           <div className="p-12 text-center">
             <p className="text-slate-500">
               No ambulances found with this filter.
             </p>
           </div>
-        )}{" "}
-      </div>{" "}
+        )}
+      </div>
       {showAddDialog && (
         <AddAmbulanceDialog onClose={() => setShowAddDialog(false)} />
       )}
-      {/* Maintenance Panel for Chef de Parc */}
-      <FleetMaintenancePanel />
     </div>
   );
 }

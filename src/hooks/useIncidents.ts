@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { incidentsService } from '../services/incidentsService';
-import type { CreateIncidentRequest, AssignAmbulanceRequest } from '../types';
+import type { CreateIncidentRequest, AssignAmbulanceRequest } from '../services/incidentsService';
 
 export const useIncidents = () => {
   const queryClient = useQueryClient();
@@ -48,12 +48,10 @@ export const useIncidents = () => {
     },
   });
 
-  // Computed values
   const activeIncidents = incidents?.filter(i => i.status !== 'RESOLVED') || [];
   const criticalIncidents = incidents?.filter(i => i.severity === 'CRITICAL' && i.status !== 'RESOLVED') || [];
   const resolvedIncidents = incidents?.filter(i => i.status === 'RESOLVED') || [];
 
-  // Statistics
   const stats = {
     total: incidents?.length || 0,
     active: activeIncidents.length,

@@ -1,9 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
+import { useAppDispatch, useAppSelector } from './redux';
 import { authService } from '../services/authService';
-import { setCredentials, logout, setLoading } from '../../../store/authSlice';
-import type { LoginCredentials, RegisterCredentials } from '../types';
+import { setCredentials, logout, setLoading } from '../store/authSlice';
+import type { LoginCredentials, RegisterCredentials } from '../services/authService';
 
 export const useAuth = () => {
   const dispatch = useAppDispatch();

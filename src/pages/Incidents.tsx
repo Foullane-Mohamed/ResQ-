@@ -1,14 +1,12 @@
-import {
-  useIncidents,
-  CreateIncidentForm,
-  IncidentCard,
-  SmartAssignmentDialog,
-} from "../features/incidents";
+import { useIncidents } from "../hooks/useIncidents";
+import { CreateIncidentForm } from "../components/CreateIncidentForm";
+import { IncidentCard } from "../components/IncidentCard";
+import { SmartAssignmentDialog } from "../components/SmartAssignmentDialog";
 import { RoleGuard } from "../components/RoleGuard";
 import { useState } from "react";
 import { Button } from "../components/ui/Button";
 import { Navigation } from "lucide-react";
-import type { Incident } from "../features/incidents/types";
+import type { Incident } from "../services/incidentsService";
 
 export default function Incidents() {
   const { incidents, isLoading } = useIncidents();
@@ -19,10 +17,9 @@ export default function Incidents() {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 h-[calc(100vh-8rem)]">
-        {/* Left Column: Form Section */}
+        {/* Left Column: Form Section */}{" "}
         <div className="lg:col-span-1">
           <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm sticky top-0">
-            {" "}
             <RoleGuard
               permission="CREATE_INCIDENT"
               fallback={
@@ -46,8 +43,7 @@ export default function Incidents() {
             </RoleGuard>
           </div>
         </div>
-
-        {/* Right Column: List Section */}
+        {/* Right Column: List Section */}{" "}
         <div className="lg:col-span-2 flex flex-col h-full bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
           <div className="p-4 border-b border-gray-100 bg-slate-50 flex justify-between items-center">
             <h2 className="font-bold text-slate-800">
@@ -58,7 +54,6 @@ export default function Incidents() {
             </span>
           </div>
           <div className="overflow-y-auto p-4 space-y-3 flex-1">
-            {" "}
             {isLoading ? (
               <p className="text-center text-slate-400 py-10">Chargement...</p>
             ) : (
@@ -76,7 +71,7 @@ export default function Incidents() {
                         !incident.assignedAmbulanceId && (
                           <Button
                             size="sm"
-                            variant="outline"
+                            variant="secondary"
                             icon={Navigation}
                             className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity"
                             onClick={() => setSelectedIncident(incident)}

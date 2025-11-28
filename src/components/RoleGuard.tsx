@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuth } from "../features/auth";
+import { useAuth } from "../hooks/useAuth";
 import { hasPermission, type Permission } from "../lib/permissions";
 
 interface RoleGuardProps {
@@ -41,7 +41,6 @@ export const RoleBasedNavigation: React.FC<RoleBasedNavigationProps> = ({
       },
     ];
 
-    // Régulateur specific items
     if (hasPermission(user, "VIEW_AMBULANCE_MAP")) {
       items.push({
         name: "Carte des Interventions",
@@ -60,7 +59,6 @@ export const RoleBasedNavigation: React.FC<RoleBasedNavigationProps> = ({
       });
     }
 
-    // Chef de Parc specific items
     if (hasPermission(user, "VIEW_FLEET_STATUS")) {
       items.push({
         name: "Gestion de la Flotte",

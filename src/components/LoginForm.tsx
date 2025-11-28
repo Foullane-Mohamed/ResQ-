@@ -2,9 +2,12 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Siren, Mail, Lock, AlertCircle } from "lucide-react";
 import { useAuth } from "../hooks/useAuth";
-import { loginSchema, type LoginFormValues } from "../lib/validators";
-import { Button } from "../../../components/ui/Button";
-import { Input } from "../../../components/ui/Input";
+import {
+  loginSchema,
+  type LoginFormValues,
+} from "../lib/validations/authValidation";
+import { Button } from "./ui/Button";
+import { Input } from "./ui/Input";
 
 interface LoginFormProps {
   onSwitchToRegister?: () => void;
@@ -77,7 +80,7 @@ export const LoginForm = ({ onSwitchToRegister }: LoginFormProps) => {
                 icon={Lock}
                 error={errors.password?.message}
               />
-            </div>{" "}
+            </div>
             <Button
               type="submit"
               className="w-full"

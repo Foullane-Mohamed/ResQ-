@@ -1,12 +1,11 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
-import { useAmbulances } from "../features/ambulances";
-import { useIncidents } from "../features/incidents";
-import { useAuth } from "../features/auth";
+import { useAmbulances } from "../hooks/useAmbulances";
+import { useIncidents } from "../hooks/useIncidents";
+import { useAuth } from "../hooks/useAuth";
 import { RoleGuard } from "../components/RoleGuard";
 import { Button } from "../components/ui/Button";
-import { hasPermission } from "../lib/permissions";
-import { Loader2, Navigation } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useState } from "react";
 
 const AMBULANCE_SVG = `<svg  width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M10 10H6"/><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.28a1 1 0 0 0-.68-.94l-4-1.08a1 1 0 0 0-1.27.52L14 18"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>`;
@@ -68,7 +67,6 @@ export default function DispatchMap() {
     );
   }
 
-  // Filter out items with invalid coordinates
   const validAmbulances =
     ambulances?.filter(
       (amb) =>
@@ -90,33 +88,13 @@ export default function DispatchMap() {
         !isNaN(inc.lat) &&
         !isNaN(inc.lng)
     ) || [];
-
   const centerPosition: [number, number] = [33.5731, -7.5898];
   return (
     <div className="space-y-4">
-      {/* Map Controls and Status Bar */}
       <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
         <div className="flex justify-between items-center">
           <h1 className="text-xl font-bold text-slate-900">Dispatch Map</h1>
-          <div className="flex items-center gap-4 text-sm">
-            <div className="flex items-center gap-2">
-              <span className="w-3 h-3 bg-emerald-500 rounded-full"></span>
-              <span>
-                {validAmbulances.filter((a) => a.status === "AVAILABLE").length}{" "}
-                Available
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-3 h-3 bg-orange-500 rounded-full"></span>
-              <span>
-                {validAmbulances.filter((a) => a.status === "BUSY").length} Busy
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-3 h-3 bg-red-500 rounded-full"></span>
-              <span>{validIncidents.length} Active Incidents</span>
-            </div>
-          </div>
+      
         </div>
       </div>
 
@@ -127,10 +105,11 @@ export default function DispatchMap() {
           scrollWheelZoom={true}
           className="h-full w-full z-0 bg-slate-100"
         >
+          {" "}
           <TileLayer
             attribution='&copy;  contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
             url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-          />{" "}
+          />
           {validIncidents.map((incident) => (
             <Marker
               key={`inc-${incident.id}`}
@@ -151,10 +130,10 @@ export default function DispatchMap() {
                   </span>
                   <h3 className="font-bold text-sm text-slate-900">
                     {incident.type}
-                  </h3>
+                  </h3>{" "}
                   <p className="text-xs text-gray-500 mt-1 line-clamp-2">
                     {incident.address}
-                  </p>{" "}
+                  </p>
                   <div className="mt-3 pt-3 border-t border-gray-100 flex justify-between items-center">
                     <span className="text-xs font-mono text-gray-400">
                       #{incident.id}
@@ -231,13 +210,13 @@ export default function DispatchMap() {
         </MapContainer>
 
         <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm p-3 rounded-lg shadow-sm border border-gray-200 z-50 text-xs space-y-2">
-          <h4 className="font-semibold text-slate-700 mb-2">Map Legend</h4>
+          <h4 className="font-semibold text-slate-700 mb-2">Map Legend</h4>{" "}
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-emerald-500 border border-white ring-1 ring-gray-100"></div>{" "}
+            <div className="w-3 h-3 rounded-full bg-emerald-500 border border-white ring-1 ring-gray-100"></div>
             Available Amb
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-orange-500 border border-white ring-1 ring-gray-100"></div>{" "}
+            <div className="w-3 h-3 rounded-full bg-orange-500 border border-white ring-1 ring-gray-100"></div>
             Busy Amb
           </div>
           <div className="flex items-center gap-2">
@@ -245,11 +224,10 @@ export default function DispatchMap() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-50"></span>
             </div>{" "}
             Critical Incident
-          </div>{" "}
+          </div>
         </div>
       </div>
 
-      {/* Smart Assignment Dialog */}
       {selectedIncident && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-xl max-w-2xl w-full mx-4">
@@ -257,15 +235,15 @@ export default function DispatchMap() {
               Smart Assignment for {selectedIncident.type}
             </h3>
             <div className="space-y-3 max-h-96 overflow-y-auto">
+              {" "}
               {validAmbulances
                 .filter((a) => a.status === "AVAILABLE")
                 .map((ambulance) => {
-                  // Calculate distance (simplified)
                   const distance =
                     Math.sqrt(
                       Math.pow(selectedIncident.lat - ambulance.lat, 2) +
                         Math.pow(selectedIncident.lng - ambulance.lng, 2)
-                    ) * 100; // Rough conversion to km
+                    ) * 100;
 
                   return (
                     <div

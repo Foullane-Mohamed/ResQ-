@@ -30,7 +30,10 @@
       "lat": 33.5731,
       "lng": -7.5898,
       "type": "A",
-      "crew": ["Ahmed", "Sarah"],
+      "crew": [
+        "Ahmed",
+        "Sarah"
+      ],
       "lastUpdate": "2025-11-26T15:22:50.211Z"
     },
     {
@@ -40,7 +43,10 @@
       "lat": 33.5831,
       "lng": -7.6098,
       "type": "B",
-      "crew": ["Karim", "Lina"],
+      "crew": [
+        "Karim",
+        "Lina"
+      ],
       "lastUpdate": "2025-11-26T15:22:55.647Z"
     },
     {
@@ -50,7 +56,9 @@
       "lat": 33.5631,
       "lng": -7.5998,
       "type": "C",
-      "crew": ["Youssef"],
+      "crew": [
+        "Youssef"
+      ],
       "lastUpdate": "2025-11-26T13:37:23.679Z"
     },
     {
@@ -60,7 +68,10 @@
       "lat": 33.5931,
       "lng": -7.5798,
       "type": "A",
-      "crew": ["Omar", "Fatima"],
+      "crew": [
+        "Omar",
+        "Fatima"
+      ],
       "lastUpdate": "2025-11-26T13:37:23.679Z"
     },
     {
@@ -69,9 +80,11 @@
       "type": "A",
       "lat": 33.60113228537358,
       "lng": -7.596638319036433,
-      "crew": ["Sint molestiae iusto"],
-      "status": "BUSY",
-      "lastUpdate": "2025-11-26T13:37:23.679Z"
+      "crew": [
+        "Sint molestiae iusto"
+      ],
+      "status": "AVAILABLE",
+      "lastUpdate": "2025-11-28T10:28:37.255Z"
     },
     {
       "id": "1764162839108",
@@ -79,9 +92,11 @@
       "type": "C",
       "lat": 33.58520410852247,
       "lng": -7.5586604444634435,
-      "crew": ["Fugiat mollitia tem"],
-      "status": "BUSY",
-      "lastUpdate": "2025-11-26T13:37:23.679Z"
+      "crew": [
+        "Fugiat mollitia tem"
+      ],
+      "status": "AVAILABLE",
+      "lastUpdate": "2025-11-28T10:28:33.812Z"
     },
     {
       "id": 1764163358617,
@@ -89,9 +104,11 @@
       "type": "A",
       "lat": 33.573138350727305,
       "lng": -7.577491521761108,
-      "crew": ["Cillum et occaecat v"],
-      "status": "MAINTENANCE",
-      "lastUpdate": "2025-11-26T13:37:23.679Z"
+      "crew": [
+        "Cillum et occaecat v"
+      ],
+      "status": "AVAILABLE",
+      "lastUpdate": "2025-11-28T10:28:35.432Z"
     },
     {
       "id": 1764163365013,
@@ -99,7 +116,9 @@
       "type": "A",
       "lat": 33.53612173430135,
       "lng": -7.625785152553067,
-      "crew": ["Quaerat dolor volupt"],
+      "crew": [
+        "Quaerat dolor volupt"
+      ],
       "status": "MAINTENANCE",
       "lastUpdate": "2025-11-26T13:37:23.679Z"
     },
@@ -108,7 +127,9 @@
       "type": "C",
       "lat": 33.60723578163877,
       "lng": -7.610672164936706,
-      "crew": ["Ut nemo quibusdam si"],
+      "crew": [
+        "Ut nemo quibusdam si"
+      ],
       "id": 1764164201849,
       "status": "MAINTENANCE",
       "lastUpdate": "2025-11-26T13:37:23.679Z"
@@ -118,7 +139,9 @@
       "type": "B",
       "lat": 33.59492722287597,
       "lng": -7.551270852800347,
-      "crew": ["Eum et est harum eli"],
+      "crew": [
+        "Eum et est harum eli"
+      ],
       "id": 1764164205912,
       "status": "BUSY",
       "lastUpdate": "2025-11-26T13:37:23.679Z"
@@ -128,7 +151,9 @@
       "type": "C",
       "lat": 33.530181879461345,
       "lng": -7.610458580058045,
-      "crew": ["Accusamus tempora an"],
+      "crew": [
+        "Accusamus tempora an"
+      ],
       "id": 1764164245031,
       "status": "AVAILABLE",
       "lastUpdate": "2025-11-26T13:37:25.031Z"
@@ -244,6 +269,17 @@
       "id": "1764164236400",
       "status": "PENDING",
       "createdAt": "2025-11-26T13:37:16.400Z"
+    },
+    {
+      "type": "Fugit est anim duci",
+      "address": "Nostrum dolor non la",
+      "severity": "MODERATE",
+      "description": "Ut ut sed magnam dol",
+      "lat": 33.5253923221028,
+      "lng": -7.606379788097226,
+      "id": "1764325462829",
+      "status": "PENDING",
+      "createdAt": "2025-11-28T10:24:22.829Z"
     }
   ]
 }

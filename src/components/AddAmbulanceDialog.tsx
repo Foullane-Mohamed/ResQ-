@@ -3,9 +3,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useAmbulances } from "../hooks/useAmbulances";
-import { Button } from "../../../components/ui/Button";
-import { Input } from "../../../components/ui/Input";
-import type { AmbulanceType } from "../types";
+import { Button } from "./ui/Button";
+import { Input } from "./ui/Input";
+import type { AmbulanceType } from "../services/ambulancesService";
 
 const addAmbulanceSchema = z.object({
   name: z.string().min(3, "Le nom est requis (min 3 caractères)"),
@@ -36,13 +36,11 @@ export const AddAmbulanceDialog = ({ onClose }: AddAmbulanceDialogProps) => {
 
   const onSubmit = async (data: AddAmbulanceFormValues) => {
     try {
-      // Parse crew members (comma-separated)
       const crew = data.crew
         .split(",")
         .map((member) => member.trim())
         .filter(Boolean);
 
-      // Random location near Casablanca for demo
       const lat = 33.5731 + (Math.random() - 0.5) * 0.1;
       const lng = -7.5898 + (Math.random() - 0.5) * 0.1;
 

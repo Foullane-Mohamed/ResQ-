@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { MapPin, Clock, Users, Navigation, AlertTriangle } from "lucide-react";
-import { useAmbulances } from "../../ambulances/hooks/useAmbulances";
+import { useAmbulances } from "../hooks/useAmbulances";
 import { useIncidents } from "../hooks/useIncidents";
-import { Button } from "../../../components/ui/Button";
-import { Badge } from "../../../components/ui/Badge";
-import { calculateDistance, formatTime } from "../../../lib/utils";
-import type { Incident } from "../types";
+import { Button } from "./ui/Button";
+import { Badge } from "./ui/Badge";
+import { calculateDistance, formatTime } from "../lib/utils";
+import type { Incident } from "../services/incidentsService";
 
 interface SmartAssignmentDialogProps {
   incident: Incident;
@@ -22,7 +22,6 @@ export const SmartAssignmentDialog = ({
     null
   );
 
-  // Calculate distances and ETAs for each ambulance
   const ambulancesWithDistance = availableAmbulances
     .map((ambulance) => {
       const distance = calculateDistance(
@@ -32,8 +31,7 @@ export const SmartAssignmentDialog = ({
         ambulance.lng
       );
 
-      // Estimate ETA based on distance (assuming 40km/h average speed in city)
-      const estimatedETA = Math.round((distance / 40) * 60); // minutes
+      const estimatedETA = Math.round((distance / 40) * 60);
 
       return {
         ...ambulance,

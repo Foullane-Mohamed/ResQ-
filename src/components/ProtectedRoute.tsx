@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "../features/auth";
+import { useAuth } from "../hooks/useAuth";
 import { canAccessPage } from "../lib/permissions";
 
 interface ProtectedRouteProps {
@@ -18,7 +18,6 @@ export const ProtectedRoute = ({
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  // Check page-specific permissions if requiredPage is provided
   if (requiredPage && !canAccessPage(user, requiredPage)) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-100">

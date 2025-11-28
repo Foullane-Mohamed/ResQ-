@@ -1,4 +1,4 @@
-import type { User } from '../features/auth/types';
+import type { User } from '../services/authService';
 
 export type Permission =
   | 'VIEW_AMBULANCE_MAP'

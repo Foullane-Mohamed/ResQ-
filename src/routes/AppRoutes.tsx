@@ -1,12 +1,11 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { AuthPage } from "../features/auth";
+import { AuthPage } from "../components/AuthPage";
 import { ProtectedRoute } from "../components/ProtectedRoute";
 import Layout from "../components/Layout";
 import Dashboard from "../pages/Dashboard";
 import DispatchMap from "../pages/DispatchMap";
 import Fleet from "../pages/Fleet";
 import Incidents from "../pages/Incidents";
-import Test2Page from "../pages/test2";
 
 const AppRoutes = () => {
   return (
@@ -53,7 +52,6 @@ const AppRoutes = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="test" element={<Test2Page />} />
       </Route>
       <Route path="*" element={<Navigate to="/dashboard" replace />} />
     </Routes>

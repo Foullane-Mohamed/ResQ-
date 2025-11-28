@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-// Try different ports in case 5000 is not available
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const api = axios.create({

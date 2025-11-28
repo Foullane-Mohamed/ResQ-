@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Wifi, WifiOff, Clock } from "lucide-react";
-import { Badge } from "./ui/Badge";
 
 interface SystemStatus {
   isOnline: boolean;
@@ -24,7 +23,6 @@ export const SystemStatusIndicator = () => {
     window.addEventListener("online", handleOnline);
     window.addEventListener("offline", handleOffline);
 
-    // Check API health every 30 seconds
     const healthCheck = setInterval(async () => {
       try {
         const response = await fetch("http://localhost:5000/ambulances");

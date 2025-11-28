@@ -1,7 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { ambulancesService } from '../services/ambulancesService';
-import type { CreateAmbulanceRequest, UpdateAmbulanceStatusRequest, AmbulanceStatus } from '../types';
-import { findNearestAmbulance } from '../../../lib/utils';
+import type { CreateAmbulanceRequest, UpdateAmbulanceStatusRequest, AmbulanceStatus } from '../services/ambulancesService';
+import { findNearestAmbulance } from '../lib/utils';
 
 export const useAmbulances = (filter?: AmbulanceStatus | 'ALL') => {
   const queryClient = useQueryClient();
@@ -38,17 +38,14 @@ export const useAmbulances = (filter?: AmbulanceStatus | 'ALL') => {
     },
   });
 
-  // Filtered ambulances
   const filteredAmbulances = filter && filter !== 'ALL'
     ? ambulances?.filter(a => a.status === filter) || []
     : ambulances || [];
 
-  // Computed values
   const availableAmbulances = ambulances?.filter(a => a.status === 'AVAILABLE') || [];
   const busyAmbulances = ambulances?.filter(a => a.status === 'BUSY') || [];
   const maintenanceAmbulances = ambulances?.filter(a => a.status === 'MAINTENANCE') || [];
 
-  // Statistics
   const stats = {
     total: ambulances?.length || 0,
     available: availableAmbulances.length,
@@ -61,7 +58,6 @@ export const useAmbulances = (filter?: AmbulanceStatus | 'ALL') => {
     },
   };
 
-  // Helper function to find nearest available ambulance
   const findNearest = (location: { lat: number; lng: number }) => {
     if (!ambulances) return null;
     return findNearestAmbulance(location, ambulances);
