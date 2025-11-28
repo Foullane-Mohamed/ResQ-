@@ -29,6 +29,8 @@
     "jsx": "react-jsx",
     /* Linting */
     "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
